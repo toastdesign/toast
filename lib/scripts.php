@@ -8,6 +8,7 @@ function toast_scripts() {
   wp_register_script('roots_plugins', get_template_directory_uri() . '/assets/js/plugins.js', false, null, true);
   wp_register_script('roots_main', get_template_directory_uri() . '/assets/js/main.js', false, null, true);
   wp_register_script('flexslider', get_template_directory_uri() . '/assets/js/flexslider.js', 'jquery', '2.0', true);
+  wp_register_script('fitvids', get_template_directory_uri() . '/assets/js/fitvids.js', 'jquery', '1.0', true);
   
   /* ------------------------------------------------------------------------ */
   /* Enqueue Scripts */
@@ -17,6 +18,7 @@ function toast_scripts() {
   wp_enqueue_script('roots_plugins');
   wp_enqueue_script('roots_main');
   wp_enqueue_script('flexslider');
+  wp_enqueue_script('fitvids');
 
   /* ------------------------------------------------------------------------ */
   /* jQuery via de HTML5 Boilerplate methode. Deze blijt in de header ivm conflicten met plugins */
