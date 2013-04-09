@@ -1,4 +1,4 @@
 toast
 =====
 
-Wordpress Theme 
+Wordpress Themes
