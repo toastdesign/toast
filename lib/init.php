@@ -12,12 +12,20 @@ function roots_setup() {
   ));
 
   // Add post thumbnails (http://codex.wordpress.org/Post_Thumbnails)
-  add_theme_support('post-thumbnails');
-  // set_post_thumbnail_size(150, 150, false);
-  // add_image_size('category-thumb', 300, 9999); // 300px wide (and unlimited height)
+  if ( function_exists( 'add_image_size' ) ) add_theme_support( 'post-thumbnails' );
+  
+  if ( function_exists( 'add_image_size' ) ) {
+    add_image_size( 'standard', 700, 300, true );             // Standard Blog Image
+    add_image_size( 'blog-medium', 320, 210, true );          // Medium Blog Image
+    add_image_size( 'sixteen-columns', 940, 475, true );      // for portfolio wide
+    add_image_size( 'ten-columns', 640, 500, true );          // for portfolio side-by-side
+    add_image_size( 'eight-columns', 460, 300, true );        // perfect for responsive - adjust height in CSS
+    add_image_size( 'eight-columns-thin', 460, 250, true );   // Portfolio 1 Col / perfect for responsive - adjust height in CSS
+    add_image_size( 'mini', 60, 60, true );                   // used for widget thumbnail
+  }
 
   // Add post formats (http://codex.wordpress.org/Post_Formats)
-  // add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
+  add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
 
   // Tell the TinyMCE editor to use a custom stylesheet
   add_editor_style('/assets/css/editor-style.css');
