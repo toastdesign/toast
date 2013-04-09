@@ -17,10 +17,11 @@ function roots_setup() {
   if ( function_exists( 'add_image_size' ) ) {
     add_image_size( 'standard', 700, 300, true );             // Standard Blog Image
     add_image_size( 'blog-medium', 320, 210, true );          // Medium Blog Image
-    add_image_size( 'sixteen-columns', 940, 475, true );      // for portfolio wide
-    add_image_size( 'ten-columns', 640, 500, true );          // for portfolio side-by-side
-    add_image_size( 'eight-columns', 460, 300, true );        // perfect for responsive - adjust height in CSS
-    add_image_size( 'eight-columns-thin', 460, 250, true );   // Portfolio 1 Col / perfect for responsive - adjust height in CSS
+    add_image_size( 'twelve-columns', 1170, 550, true );      // Full width no sidebar
+    add_image_size( 'nine-columns', 870, 475, true );         // Full width and sidebar
+    add_image_size( 'six-columns', 570, 300, true );          // Six columns of full width
+    add_image_size( 'three-columns', 270, 200, true );        // One fourth of full width
+    add_image_size( 'two-columns', 170, 125, true );          // One sixt of full width
     add_image_size( 'mini', 60, 60, true );                   // used for widget thumbnail
   }
 
