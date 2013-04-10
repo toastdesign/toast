@@ -242,52 +242,6 @@ function toast_video($atts) {
 }
 
 /*-----------------------------------------------------------------------------------*/
-/*	Icons & Iconbox
-/*-----------------------------------------------------------------------------------*/
-
-function toast_icon( $atts, $content = null ) {
-	extract(shortcode_atts(array(
-       	'icon'      => 'mac'
-    ), $atts));
-    
-	$out = '<span class="iconbox-'. $icon .'"></span>';
-    return $out;
-}
-
-/*-----------------------------------------------------------------------------------*/
-
-function toast_iconbox( $atts, $content = null ) {
-	extract(shortcode_atts(array(
-       	'icon'      => 'ok',
-       	'title'		=> '',
-       	'iconurl' 	=> ''
-    ), $atts));
-    
-    $geticon = '';
-    
-    if($iconurl != ''){
-	    $geticon = '<span class="iconbox-none"><img src="'.$iconurl.'" /></span>';
-    }
-    else{
-	    $geticon = '<span class="iconbox-'. $icon .'"></span>';
-    }
-    
-	$out = '<div class="iconbox">'.$geticon.'<h3>'. $title .'</h3>'. do_shortcode($content) . '</div>';
-    return $out;
-}
-
-/*-----------------------------------------------------------------------------------*/
-
-function toast_miniicon( $atts, $content = null ) {
-	extract(shortcode_atts(array(
-       	'icon'      => 'ok'
-    ), $atts));
-    
-	$out = '<i class="icon-'. $icon .'"></i>';
-    return $out;
-}
-
-/*-----------------------------------------------------------------------------------*/
 /*	Lists
 /*-----------------------------------------------------------------------------------*/
 
@@ -366,19 +320,6 @@ extract( shortcode_atts( array(
 }
 
 /*-----------------------------------------------------------------------------------*/
-/* Styled Tables
-/*-----------------------------------------------------------------------------------*/
-
-function toast_table( $atts, $content = null) {
-
-extract( shortcode_atts( array(
-      'style' 	=> '1'
-      ), $atts ) );
-      
-      return '<div class="custom-table-' . $style . '">' . do_shortcode($content) . '</div>';
-}
-
-/*-----------------------------------------------------------------------------------*/
 /* Testimonial
 /*-----------------------------------------------------------------------------------*/
 
@@ -388,50 +329,6 @@ extract( shortcode_atts( array(
       ), $atts ) );
       return '<div class="testimonial">' . do_shortcode($content) . '</div><div class="testimonial-author">' .$author. '</div>';
 }
-
-/*-----------------------------------------------------------------------------------*/
-/*	Tabs
-/*-----------------------------------------------------------------------------------*/
-
-function toast_tabgroup( $atts, $content = null ) {
-	$GLOBALS['tab_count'] = 0;
-	$i = 1;
-	$randomid = rand();
-
-	do_shortcode( $content );
-
-	if( is_array( $GLOBALS['tabs'] ) ){
-	
-		foreach( $GLOBALS['tabs'] as $tab ){	
-			if( $tab['icon'] != '' ){
-				$icon = '<i class="icon-'.$tab['icon'].'"></i>';
-			}
-			else{
-				$icon = '';
-			}
-			$tabs[] = '<li class="tab"><a href="#panel'.$randomid.$i.'">'.$icon . $tab['title'].'</a></li>';
-			$panes[] = '<div class="panel" id="panel'.$randomid.$i.'"><p>'.$tab['content'].'</p></div>';
-			$i++;
-			$icon = '';
-		}
-		$return = '<div class="tabset"><ul class="tabs">'.implode( "\n", $tabs ).'</ul>'.implode( "\n", $panes ).'</div>';
-	}
-	return $return;
-}
-add_shortcode( 'tabgroup', 'minti_tabgroup' );
-
-function toast_tab( $atts, $content = null) {
-	extract(shortcode_atts(array(
-			'title' => '',
-			'icon'  => ''
-	), $atts));
-	
-	$x = $GLOBALS['tab_count'];
-	$GLOBALS['tabs'][$x] = array( 'title' => sprintf( $title, $GLOBALS['tab_count'] ), 'icon' => $icon, 'content' =>  $content );
-	$GLOBALS['tab_count']++;
-}
-add_shortcode( 'tab', 'toast_tab' );
-
 
 /*-----------------------------------------------------------------------------------*/
 /* Toggle */
@@ -488,207 +385,35 @@ function toast_separator( $atts, $content = null){
 	return '<'.$headline.' class="title"><span>'.$title.'</span></'.$headline.'>';
 }
 
-/*-----------------------------------------------------------------------------------*/
-/*	Latest Blog
-/*-----------------------------------------------------------------------------------*/
-
-function toast_bloglist($atts){
-	extract(shortcode_atts(array(
-       	'posts'      => '4',
-       	'title' => 'Latest Blog Entries',
-       	'show_title' => 'yes',
-       	'categories' => 'all'
-    ), $atts));
-    
-    global $post;
-
-	$args = array(
-		'post_type' => 'post',
-		'posts_per_page' => $posts,
-		'order'          => 'DESC',
-		'orderby'        => 'date',
-		'post_status'    => 'publish'
-    );
-    
-    if($categories != 'all'){
-    	
-    	// string to array
-    	$str = $categories;
-    	$arr = explode(',', $str);
-    	//var_dump($arr);
-    	
-		$args['tax_query'][] = array(
-			'taxonomy' 	=> 'category',
-			'field' 	=> 'slug',
-			'terms' 	=> $arr
-		);
-	}
-
-    query_posts( $args );
-    $out = '';
-    
-   
-
-	if( have_posts() ) :
-		
-		if($show_title == 'yes'){
-			$out .= '<h3 class="title"><span>'.$title.'</span></h3>';
-		}
-		
-		while ( have_posts() ) : the_post();
-				
-			$out .= '<div class="latest-blog-list clearfix"><div class="blog-list-item-date">'.get_the_time('d').'<span>'.get_the_time('M').'</span></div>
-					<div class="blog-list-item-description">
-						<h4><a href="'.get_permalink().'" title="' . get_the_title() . '">'.get_the_title() .'</a></h4>
-						<span>'.get_comments_number().' '.__( 'Comments', 'minti' ) .'</span>
-						<div class="blog-list-item-excerpt">'.limit_words(get_the_excerpt(), '20').'... <a href="'. get_permalink() . '">' . 'Read More &rarr;' . '</a></div>
-					</div>
-					</div>';
-			
-		endwhile;
-		
-		$out .='<div class="clear"></div>';
-		
-		 wp_reset_query();
-	
-	endif;
-
-	return $out;
-}
-add_shortcode('bloglist', 'toast_bloglist');
-
-/*-----------------------------------------------------------------------------------*/
-/*	Latest Blog
-/*-----------------------------------------------------------------------------------*/
-
-function toast_blog($atts){
-	extract(shortcode_atts(array(
-       	'posts'      => '4',
-       	'title' => 'Latest From the Blog',
-       	'show_title' => 'yes',
-       	'categories' => 'all'
-    ), $atts));
-    
-    global $post;
-
-	$args = array(
-		'post_type' => 'post',
-		'posts_per_page' => $posts,
-		'order'          => 'DESC',
-		'orderby'        => 'date',
-		'post_status'    => 'publish'
-    );
-    
-    if($categories != 'all'){
-    	
-    	// string to array
-    	$str = $categories;
-    	$arr = explode(',', $str);
-    	//var_dump($arr);
-    	
-		$args['tax_query'][] = array(
-			'taxonomy' 	=> 'category',
-			'field' 	=> 'slug',
-			'terms' 	=> $arr
-		);
-	}
-
-    query_posts( $args );
-    $out = '';
-    
- 
-	if( have_posts() ) :
-		
-		if($show_title == 'yes'){
-			$out .= '<h3 class="title"><span>'.$title.'</span></h3>';
-		}
-		
-		$out .= '<div class="latest-blog negative-wrap">';	
-		
-		while ( have_posts() ) : the_post();
-		
-			 //$text = strip_tags(minti_excerpt(20));
-			
-			$out .= '<div class="blog-item four columns">';
-			
-			if ( has_post_thumbnail()) {
-				$blog_thumbnail= wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'eight-columns' );
-				$out .= '<a href="'.get_permalink().'" title="' . get_the_title() . '" class="blog-pic"><img src="'.$blog_thumbnail[0].'" /><div class="blog-overlay">';
-				
-					if ( has_post_format( 'audio' )) {
-						$out .= '<span class="post-icon audio"></span>';
-					}
-					if ( has_post_format( 'gallery' )) {
-						$out .= '<span class="post-icon imagegallery"></span>';
-					}
-					if ( has_post_format( 'link' )) {
-						$out .= '<span class="post-icon link"></span>';
-					}
-					if ( has_post_format( 'quote' )) {
-						$out .= '<span class="post-icon quote"></span>';
-					}
-					if ( has_post_format( 'video' )) {
-						$out .= '<span class="post-icon video"></span>';
-					}
-					if ( get_post_format() == false ) {
-						$out .= '<span class="post-icon standard"></span>';
-					}
-				
-				$out .= '</div></a>';
-			}
-			
-			$out .= '<div class="blog-item-description">
-						<h4><a href="'.get_permalink().'" title="' . get_the_title() . '">'.get_the_title() .'</a></h4>
-						<span>'.get_the_date().' / '.get_comments_number().' '.__( 'Comments', 'minti' ) .'</span>
-					</div>';
-		
-		    $out .='<div class="blog-border"></div></div>';
-			
-		endwhile;
-		
-		$out .='</div><div class="clear"></div>';
-		
-		 wp_reset_query();
-	
-	endif;
-
-	return $out;
-}
-add_shortcode('blog', 'toast_blog');
-
 /* ----------------------------------------------------- */
 /* Pre Process Shortcodes */
 /* ----------------------------------------------------- */
 
 function pre_process_shortcode($content) {
-    global $shortcode_tags;
- 
-    // Backup current registered shortcodes and clear them all out
-    $orig_shortcode_tags = $shortcode_tags;
-    remove_all_shortcodes();
-    
-    add_shortcode('alert', 'toast_alert');
-    add_shortcode('button', 'toast_buttons');
-    
-    add_shortcode('teaserbox', 'toast_teaserbox');
-    add_shortcode('teaser', 'toast_teaser');
-    add_shortcode('callout', 'toast_callout');
-    add_shortcode('box', 'toast_box');
-    
-    add_shortcode('googlefont', 'toast_googlefont');
-    
-    add_shortcode('br', 'toast_br');
-    add_shortcode('clear', 'toast_clear');
-    add_shortcode('gap', 'toast_gap');
-    add_shortcode('hr', 'toast_hr');
+  global $shortcode_tags;
+
+  // Backup current registered shortcodes and clear them all out
+  $orig_shortcode_tags = $shortcode_tags;
+  remove_all_shortcodes();
+  
+  add_shortcode('alert', 'toast_alert');
+  add_shortcode('button', 'toast_buttons');
+  
+  add_shortcode('teaserbox', 'toast_teaserbox');
+  add_shortcode('teaser', 'toast_teaser');
+  add_shortcode('callout', 'toast_callout');
+  add_shortcode('box', 'toast_box');
+  
+  add_shortcode('googlefont', 'toast_googlefont');
+  
+  add_shortcode('br', 'toast_br');
+  add_shortcode('clear', 'toast_clear');
+  add_shortcode('gap', 'toast_gap');
+  add_shortcode('hr', 'toast_hr');
 	
 	add_shortcode('dropcap', 'toast_dropcap');
 	
 	add_shortcode('video', 'toast_video');
-	
-	add_shortcode('iconbox', 'toast_iconbox');
-	add_shortcode('icon', 'toast_icon');
-	add_shortcode('mini-icon', 'toast_miniicon');
 	
 	add_shortcode( 'gal', 'toast_gallery' );
 	
@@ -746,7 +471,7 @@ function add_button() {
 
 // Define Position of TinyMCE Icons
 function register_button_3($buttons) {  
-   array_push($buttons, "alert", "button", "divider", "dropcap", "video", "gap", "clear", "icon", "miniicon", "iconbox", "projects", "blog", "bloglist", "testimonial");  
+   array_push($buttons, "alert", "button", "divider", "dropcap", "video", "gap", "clear", "projects", "blog", "bloglist", "testimonial");  
    return $buttons;  
 } 
 function register_button_4($buttons) {  
@@ -762,10 +487,6 @@ function add_plugin($plugin_array) {
    $plugin_array['video'] = get_template_directory_uri().'/assets/tinymce/tinymce.js';
    $plugin_array['gap'] = get_template_directory_uri().'/assets/tinymce/tinymce.js';
    $plugin_array['clear'] = get_template_directory_uri().'/assets/tinymce/tinymce.js'; 
-   $plugin_array['icon'] = get_template_directory_uri().'/assets/tinymce/tinymce.js';
-   $plugin_array['miniicon'] = get_template_directory_uri().'/assets/tinymce/tinymce.js';
-   $plugin_array['iconbox'] = get_template_directory_uri().'/assets/tinymce/tinymce.js';
-   $plugin_array['list'] = get_template_directory_uri().'/assets/tinymce/tinymce.js';
    $plugin_array['pullquote'] = get_template_directory_uri().'/assets/tinymce/tinymce.js';
    $plugin_array['responsiveimage'] = get_template_directory_uri().'/assets/tinymce/tinymce.js';
    $plugin_array['socialmedia'] = get_template_directory_uri().'/assets/tinymce/tinymce.js';
