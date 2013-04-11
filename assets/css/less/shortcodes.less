@@ -1,0 +1,17 @@
+/*-----------------------------------------------------------------------------------*/
+/*	Toggle
+/*-----------------------------------------------------------------------------------*/
+
+.toggle{ margin-bottom:20px;
+	.toggle-title {border: 1px solid @grayLight; display: block;position: relative; padding:10px 0px 10px 15px; background-color:@grayLighter; .border-radius(3px); font-weight:bold; cursor: pointer; overflow: hidden; color:@grayLight;
+		span {float:right; display:block; margin:-10px 0px -10px 0px; width:41px; height:41px; background: url(../img/accordion-open.png) no-repeat right center;	color:@grayLight;}
+		i {margin:-2px 8px 0 0px; opacity: 0.4;}
+		&.active {color:@grayDark; .border-radius(3px 3px 0px 0px);
+			span {background: url(../img/accordion-close.png) no-repeat right center;}
+			i {	opacity: 0.95; line-height: 1;}
+		}
+	}
+	.toggle-inner {margin:0; .border-radius(0px 0px 3px 3px); .box-shadow(0px 1px 1px 0px rgba(180,180,180,0.1)); border:1px solid @grayLight;border-top:0; padding:20px 20px 0 20px; display:none; 
+		div{ max-width: 100%;}
+	}
+}
