@@ -53,6 +53,69 @@ function toast_video($atts) {
   }
 }
 
+/*-----------------------------------------------------------------------------------*/
+/* Separator */
+/*-----------------------------------------------------------------------------------*/
+
+function toast_separator( $atts, $content = null){
+  extract(shortcode_atts(array(
+        'headline'      => 'h3',
+        'title' => 'Title'
+    ), $atts));
+   
+  return '<'.$headline.' class="sep_title"><span>'.$title.'</span></'.$headline.'>';
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* Toggle */
+/*-----------------------------------------------------------------------------------*/
+
+function toast_toggle( $atts, $content = null){
+  extract(shortcode_atts(array(
+        'title' => '',
+        'icon' => '',
+        'open' => "false"
+    ), $atts));
+
+  if($icon == '') {
+      $return = "";
+    }
+    else{
+      $return = "<i class='icon-".$icon."'></i>";
+    }
+    
+    if($open == "true") {
+      $return2 = "active";
+    }
+    else{
+      $return2 = '';
+    }
+   
+   return '<div class="toggle"><div class="toggle-title '.$return2.'">'.$return.''.$title.'<span></span></div><div class="toggle-inner"><p>'. do_shortcode($content) . '</p></div></div>';
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* Responsive Visibility 
+/*-----------------------------------------------------------------------------------*/
+
+function toast_responsivevisibility( $atts, $content = null) {
+
+extract( shortcode_atts( array(
+      'show' => 'desktop'
+      ), $atts ) );
+      return '<div class="visibility-' . $show . '">' . do_shortcode($content) . '</div>';
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* Responsive Images 
+/*-----------------------------------------------------------------------------------*/
+
+function toast_responsive( $atts, $content = null ) {
+    extract(shortcode_atts(array(), $atts));
+  
+  return '<span class="responsive">' . do_shortcode($content) . '</span>';
+}
+
 
 /* ----------------------------------------------------- */
 /* Pre Process Shortcodes */
@@ -66,6 +129,9 @@ function pre_process_shortcode($content) {
 
     add_shortcode('alert', 'toast_alert');
     add_shortcode('video', 'toast_video');
+    add_shortcode('separator', 'toast_separator');
+    add_shortcode('toggle', 'toast_toggle');
+    add_shortcode('visibility', 'toast_responsivevisibility');
 
     // Do the shortcode (only the one above is registered)
     $content = do_shortcode($content);
@@ -97,14 +163,16 @@ function add_button() {
 
 // Define Position of TinyMCE Icons
 function register_button_3($buttons) {  
-   array_push($buttons, "alert", "video");  
+   array_push($buttons, "alert", "video", "separatorheadline", "toggle", "visibility");  
    return $buttons;  
 }
-
 
 function add_plugin($plugin_array) {
   $plugin_array['alert'] = get_template_directory_uri().'/assets/tinymce/tinymce.js';  
   $plugin_array['video'] = get_template_directory_uri().'/assets/tinymce/tinymce.js';
+  $plugin_array['toggle'] = get_template_directory_uri().'/assets/tinymce/tinymce.js';
+  $plugin_array['visibility'] = get_template_directory_uri().'/assets/tinymce/tinymce.js';
+  $plugin_array['separatorheadline'] = get_template_directory_uri().'/assets/tinymce/tinymce.js';
   return $plugin_array;
 }   
 
