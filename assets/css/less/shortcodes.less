@@ -15,3 +15,132 @@
 		div{ max-width: 100%;}
 	}
 }
+
+/*-----------------------------------------------------------------------------------*/
+/*	Alert Messages
+/*-----------------------------------------------------------------------------------*/
+.alert-message{
+	position: relative;
+	border: 1px solid #ddd;
+	display: block;
+	background-image: linear-gradient(bottom, #F7F7F7 0%, #FFFFFF 100%);
+	background-image: -o-linear-gradient(bottom, #F7F7F7 0%, #FFFFFF 100%);
+	background-image: -moz-linear-gradient(bottom, #F7F7F7 0%, #FFFFFF 100%);
+	background-image: -webkit-linear-gradient(bottom, #F7F7F7 0%, #FFFFFF 100%);
+	background-image: -ms-linear-gradient(bottom, #F7F7F7 0%, #FFFFFF 100%);
+	background-color: #F9F9F9;
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+			border-radius: 3px;
+	-webkit-box-shadow:0px 1px 1px 0px rgba(180, 180, 180, 0.1);
+       -moz-box-shadow:0px 1px 1px 0px rgba(180, 180, 180, 0.1);
+            box-shadow:0px 1px 1px 0px rgba(180, 180, 180, 0.1);
+	font-weight:bold;
+	padding:10px 40px;
+	text-align: center;
+	margin-bottom:20px;
+}
+
+	.alert-message.warning{
+		background-image: linear-gradient(bottom, #fbf6e3 0%, #FFFFFF 100%);
+		background-image: -o-linear-gradient(bottom, #fbf6e3 0%, #FFFFFF 100%);
+		background-image: -moz-linear-gradient(bottom, #fbf6e3 0%, #FFFFFF 100%);
+		background-image: -webkit-linear-gradient(bottom, #fbf6e3 0%, #FFFFFF 100%);
+		background-image: -ms-linear-gradient(bottom, #fbf6e3 0%, #FFFFFF 100%);
+		background-color: #fbf6e3;
+		border-color:#efd877;
+		color:#c4a80a;
+		a{
+			color:#c4a80a;
+		}
+	}
+	
+	
+	.alert-message.success{
+		background-image: linear-gradient(bottom, #e9f2d2 0%, #FFFFFF 100%);
+		background-image: -o-linear-gradient(bottom, #e9f2d2 0%, #FFFFFF 100%);
+		background-image: -moz-linear-gradient(bottom, #e9f2d2 0%, #FFFFFF 100%);
+		background-image: -webkit-linear-gradient(bottom, #e9f2d2 0%, #FFFFFF 100%);
+		background-image: -ms-linear-gradient(bottom, #e9f2d2 0%, #FFFFFF 100%);
+		background-color: #e9f2d2;
+		border-color:#c0da66;
+		color:#88b12b;
+		a{
+			color:#88b12b;
+		}
+	}
+	
+	
+	.alert-message.error{
+		background-image: linear-gradient(bottom, #ffe9e9 0%, #FFFFFF 100%);
+		background-image: -o-linear-gradient(bottom, #ffe9e9 0%, #FFFFFF 100%);
+		background-image: -moz-linear-gradient(bottom, #ffe9e9 0%, #FFFFFF 100%);
+		background-image: -webkit-linear-gradient(bottom, #ffe9e9 0%, #FFFFFF 100%);
+		background-image: -ms-linear-gradient(bottom, #ffe9e9 0%, #FFFFFF 100%);
+		background-color: #ffe9e9;
+		border-color:#e99f9f;
+		color:#d25c5a;
+		a{
+			color:#d25c5a;
+		}
+	}
+	
+	
+	.alert-message.info{
+		background-image: linear-gradient(bottom, #dbe9f3 0%, #FFFFFF 100%);
+		background-image: -o-linear-gradient(bottom, #dbe9f3 0%, #FFFFFF 100%);
+		background-image: -moz-linear-gradient(bottom, #dbe9f3 0%, #FFFFFF 100%);
+		background-image: -webkit-linear-gradient(bottom, #dbe9f3 0%, #FFFFFF 100%);
+		background-image: -ms-linear-gradient(bottom, #dbe9f3 0%, #FFFFFF 100%);
+		background-color: #dbe9f3;
+		border-color:#9fc2dd;
+		color:#468bbf;
+		a{
+			color:#468bbf;
+		}
+	p {	margin:0; padding:0;}
+}
+
+.alert-message span.close{
+	display:block;
+	padding:10px 15px;
+	position: absolute;
+	top:0;
+	right: 0;
+	cursor: pointer;
+	opacity: 0.5;
+}
+.alert-message span.close:hover{
+	opacity: 1;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	Media
+/*-----------------------------------------------------------------------------------*/
+
+.visibility-mobile { display: none !important; }
+.visibility-mobile-portrait { display: none !important; }
+.visibility-mobile-landscape { display: none !important; }
+.visibility-tablet { display: none !important; }
+
+@media (max-width: 479px) {
+	.visibility-mobile { display: inherit !important; }
+	.visibility-mobile-portrait { display: inherit !important; }
+	.visibility-mobile-landscape { display: none !important; }
+	.visibility-desktop { display: none !important; }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	.visibility-mobile { display: inherit !important; }
+	.visibility-mobile-portrait { display: none !important; }
+	.visibility-mobile-landscape { display: inherit !important; }
+	.visibility-desktop { display: none !important; }
+
+}
+
+@media (min-width: 768px) and (max-width: 959px) {
+	.visibility-tablet { display: inherit !important; }
+	.visibility-mobile-portrait { display: none !important; }
+	.visibility-mobile-landscape { display: none !important; }
+	.visibility-desktop { display: none !important; }
+}
