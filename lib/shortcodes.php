@@ -6,18 +6,18 @@
 function toast_alert( $atts, $content = null) {
 
 extract( shortcode_atts( array(
-      'type'  => 'warning',
-      'close' => 'true'
-      ), $atts ) );
-      
-      if($close == 'false') {
-      $var1 = '';
-    }
-    else{
-      $var1 = '<span class="close" href="#">x</span>';
-    }
-      
-      return '<div class="alert-message ' . $type . '">' . do_shortcode($content) . '' . $var1 . '</div>';
+    'type'  => 'warning',
+    'close' => 'true'
+    ), $atts ) );
+    
+    if($close == 'false') {
+    $var1 = '';
+  }
+  else{
+    $var1 = '<span class="close" href="#">x</span>';
+  }
+    
+  return '<div class="alert-message ' . $type . '">' . do_shortcode($content) . '' . $var1 . '</div>';
 }
 
 /*-----------------------------------------------------------------------------------*/
