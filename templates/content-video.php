@@ -1,11 +1,9 @@
 <article <?php post_class(); ?>>
     
-    <?php if ( has_post_thumbnail() ) { ?>
-        <div class="post-image">
-            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" ><?php the_post_thumbnail('blog-medium'); ?></a>
-        </div>
-    <?php } ?> 
-    
+    <div class="post-video">
+        <?php echo get_post_meta($post->ID, '_format_video_embed', true); ?>
+    </div>
+
     <header>
         <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
         <?php get_template_part('templates/entry-meta'); ?>
