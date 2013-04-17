@@ -16,31 +16,32 @@ function roots_setup() {
   
   if ( function_exists( 'add_image_size' ) ) {
     add_image_size( 'aspect43', 770, 578, true );    // Standard Blog Image
-    add_image_size( 'aspect43/2', 770, 289, true );    // Standard Blog Image
-    add_image_size( 'aspect169', 770, 433, true );    // Standard Blog Image
+    add_image_size( 'aspect43half', 770, 289, true );  // Standard Blog Image
+    add_image_size( 'aspect43small', 370, 278, true );  // Standard Blog Image
+    add_image_size( 'aspect169', 770, 433, true );   // Standard Blog Image
   }
 
   // Add custom header support
   add_theme_support( 'custom-header', array(
-    // Header image default
     'default-image'         => get_template_directory_uri() . '/images/headers/default.jpg',
-    // Header text display default
     'header-text'           => false,
-    // Header text color default
     'default-text-color'    => '000',
-    // Header image width (in pixels)
     'width'                 => 1440,
-    // Header image height (in pixels)
     'height'                => 450,
-    // Header image random rotation default
     'random-default'        => false,
-    // Template header style callback
     'wp-head-callback'      => $wphead_cb,
-    // Admin header style callback
     'admin-head-callback'   => $adminhead_cb,
-    // Admin preview style callback
     'admin-preview-callback'=> $adminpreview_cb
-  ) );
+  ));
+
+  // add custom background support 
+  add_theme_support( 'custom-background', array(
+    'default-color'          => '',
+    'default-image'          => '',
+    'wp-head-callback'       => '_custom_background_cb',
+    'admin-head-callback'    => '',
+    'admin-preview-callback' => ''
+  ));
 
   // Add post formats (http://codex.wordpress.org/Post_Formats)
   add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));

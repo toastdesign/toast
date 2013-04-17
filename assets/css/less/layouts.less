@@ -9,6 +9,11 @@
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
 .container-fluid {padding-right: @gridGutterWidth; padding-left: @gridGutterWidth;.clearfix();}
 
+// Header images from post type
+.post-header-image {height:450px; overflow: hidden; position: relative;
+	img {position: absolute; top:-50%;}
+}
+
 // Blogtype post overview
 article { padding:@gridGutterWidth * 2 0; .clearfix(); border-bottom:1px solid @grayLighter;
 	.entry-title {margin-top:0px;}

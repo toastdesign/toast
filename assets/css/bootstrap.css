@@ -545,6 +545,15 @@ a:focus {
 .container-fluid:after {
   clear: both;
 }
+.post-header-image {
+  height: 450px;
+  overflow: hidden;
+  position: relative;
+}
+.post-header-image img {
+  position: absolute;
+  top: -50%;
+}
 article {
   padding: 40px 0;
   *zoom: 1;

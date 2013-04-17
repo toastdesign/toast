@@ -34,7 +34,7 @@ function roots_main_class() {
  * .sidebar classes
  */
 function roots_sidebar_class() {
-  return 'span4';
+  return 'span3 offset1';
 }
 
 /**
