@@ -4,21 +4,15 @@
 
 
 // Container (centered, fixed-width layouts)
-.container {
-  .container-fixed();
-}
+.container {.container-fixed();}
 
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
-.container-fluid {
-  padding-right: @gridGutterWidth;
-  padding-left: @gridGutterWidth;
-  .clearfix();
-}
+.container-fluid {padding-right: @gridGutterWidth; padding-left: @gridGutterWidth;.clearfix();}
 
 // Blogtype post overview
-article {
-	.post-image,
-	.post-video,
-	.post-gallery {max-width:@six-columns;}
+article { padding:@gridGutterWidth * 2 0; .clearfix(); border-bottom:1px solid @grayLighter;
+	.entry-title {margin-top:0px;}
+	.post-image {.pull-left();margin-right:@gridGutterWidth; }
+	
 }
 

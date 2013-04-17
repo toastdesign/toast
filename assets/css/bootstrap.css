@@ -545,10 +545,26 @@ a:focus {
 .container-fluid:after {
   clear: both;
 }
-article .post-image,
-article .post-video,
-article .post-gallery {
-  max-width: 570px;
+article {
+  padding: 40px 0;
+  *zoom: 1;
+  border-bottom: 1px solid #eeeeee;
+}
+article:before,
+article:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+article:after {
+  clear: both;
+}
+article .entry-title {
+  margin-top: 0px;
+}
+article .post-image {
+  float: left;
+  margin-right: 20px;
 }
 p {
   margin: 0 0 10px;
@@ -4734,21 +4750,20 @@ input[type="submit"].btn.btn-mini {
   display: block;
   padding: 4px;
   line-height: 20px;
-  border: 1px solid #ddd;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  border: 1px solid #dddddd;
+  -webkit-box-shadow: 0px 0px 38px rgba(0, 0, 0, 0.055);
+  -moz-box-shadow: 0px 0px 38px rgba(0, 0, 0, 0.055);
+  box-shadow: 0px 0px 38px rgba(0, 0, 0, 0.055);
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 a.thumbnail:hover,
-a.thumbnail:focus {
-  border-color: #0088cc;
+a.thumbnail:focus,
+a .thumbnail:hover,
+a .thumbnail:focus {
+  border-color: #999999;
   -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);

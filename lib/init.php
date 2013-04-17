@@ -19,11 +19,34 @@ function roots_setup() {
     add_image_size( 'blog-medium', 320, 210, true );          // Medium Blog Image
     add_image_size( 'twelve-columns', 1170, 550, true );      // Full width no sidebar
     add_image_size( 'nine-columns', 870, 475, true );         // Full width and sidebar
+    add_image_size( 'eight-columns', 770, 300, true );          // Six columns of full width
     add_image_size( 'six-columns', 570, 300, true );          // Six columns of full width
     add_image_size( 'three-columns', 270, 200, true );        // One fourth of full width
     add_image_size( 'two-columns', 170, 125, true );          // One sixt of full width
     add_image_size( 'mini', 60, 60, true );                   // used for widget thumbnail
   }
+
+  // Add custom header support
+  add_theme_support( 'custom-header', array(
+    // Header image default
+    'default-image'         => get_template_directory_uri() . '/images/headers/default.jpg',
+    // Header text display default
+    'header-text'           => false,
+    // Header text color default
+    'default-text-color'    => '000',
+    // Header image width (in pixels)
+    'width'                 => 1440,
+    // Header image height (in pixels)
+    'height'                => 450,
+    // Header image random rotation default
+    'random-default'        => false,
+    // Template header style callback
+    'wp-head-callback'      => $wphead_cb,
+    // Admin header style callback
+    'admin-head-callback'   => $adminhead_cb,
+    // Admin preview style callback
+    'admin-preview-callback'=> $adminpreview_cb
+  ) );
 
   // Add post formats (http://codex.wordpress.org/Post_Formats)
   add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));

@@ -2,7 +2,7 @@
     
     <?php if ( has_post_thumbnail() ) { ?>
         <div class="post-image">
-            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" ><?php the_post_thumbnail('six-columns'); ?></a>
+            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" ><?php the_post_thumbnail('blog-medium', array('class' =>  'thumbnail')); ?></a>
         </div>
     <?php } ?> 
     
