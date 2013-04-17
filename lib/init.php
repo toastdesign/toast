@@ -15,15 +15,9 @@ function roots_setup() {
   if ( function_exists( 'add_image_size' ) ) add_theme_support( 'post-thumbnails' );
   
   if ( function_exists( 'add_image_size' ) ) {
-    add_image_size( 'standard', 700, 300, true );             // Standard Blog Image
-    add_image_size( 'blog-medium', 320, 210, true );          // Medium Blog Image
-    add_image_size( 'twelve-columns', 1170, 550, true );      // Full width no sidebar
-    add_image_size( 'nine-columns', 870, 475, true );         // Full width and sidebar
-    add_image_size( 'eight-columns', 770, 300, true );          // Six columns of full width
-    add_image_size( 'six-columns', 570, 300, true );          // Six columns of full width
-    add_image_size( 'three-columns', 270, 200, true );        // One fourth of full width
-    add_image_size( 'two-columns', 170, 125, true );          // One sixt of full width
-    add_image_size( 'mini', 60, 60, true );                   // used for widget thumbnail
+    add_image_size( 'aspect43', 770, 578, true );    // Standard Blog Image
+    add_image_size( 'aspect43/2', 770, 289, true );    // Standard Blog Image
+    add_image_size( 'aspect169', 770, 433, true );    // Standard Blog Image
   }
 
   // Add custom header support
