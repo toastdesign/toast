@@ -1,1 +1,1 @@
-<?php the_tags('<ul><li>','</li><li>','</li></ul>'); ?>
+<?php the_tags('<ul class="entry-tags"><li>','</li><li>','</li></ul>'); ?>

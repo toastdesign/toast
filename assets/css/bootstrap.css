@@ -546,13 +546,17 @@ a:focus {
   clear: both;
 }
 .post-header-image {
-  height: 450px;
+  height: 350px;
   overflow: hidden;
   position: relative;
 }
 .post-header-image img {
   position: absolute;
-  top: -50%;
+  top: -100%;
+  left: 50%;
+  margin-left: -720px;
+  right: 0;
+  min-width: 1440px;
 }
 article {
   padding: 40px 0;
@@ -574,6 +578,19 @@ article .entry-title {
 article .post-image {
   float: left;
   margin-right: 20px;
+}
+article footer {
+  padding: 10px 0;
+}
+article footer .entry-tags {
+  overflow: hidden;
+  margin: 0px;
+}
+article footer .entry-tags li {
+  float: left;
+  overflow: hidden;
+  list-style-type: none;
+  margin-right: 8px;
 }
 p {
   margin: 0 0 10px;

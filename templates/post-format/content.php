@@ -2,7 +2,7 @@
     
     <?php if ( has_post_thumbnail() ) { ?>
         <div class="post-image">
-            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" ><?php the_post_thumbnail('aspect43small', array('class' =>  'thumbnail')); ?></a>
+            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" ><?php the_post_thumbnail('aspect43half', array('class' =>  'thumbnail')); ?></a>
         </div>
     <?php } ?> 
     

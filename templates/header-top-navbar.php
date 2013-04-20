@@ -19,4 +19,4 @@
     </div>
   </div>
 </header>
-  <?php get_template_part ('templates/header-image'); ?>
+<?php get_template_part ('templates/header-image'); ?>

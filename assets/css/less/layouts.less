@@ -10,14 +10,18 @@
 .container-fluid {padding-right: @gridGutterWidth; padding-left: @gridGutterWidth;.clearfix();}
 
 // Header images from post type
-.post-header-image {height:450px; overflow: hidden; position: relative;
-	img {position: absolute; top:-50%;}
+.post-header-image {height:350px; overflow: hidden; position: relative;
+	img {position: absolute; top:-100%; left:50%; margin-left:-720px; right:0; min-width:1440px;}
 }
 
 // Blogtype post overview
 article { padding:@gridGutterWidth * 2 0; .clearfix(); border-bottom:1px solid @grayLighter;
 	.entry-title {margin-top:0px;}
 	.post-image {.pull-left();margin-right:@gridGutterWidth; }
-	
+	footer { padding:@gridGutterWidth / 2 0; 
+		.entry-tags { overflow: hidden; margin:0px;
+			li {.pull-left(); overflow: hidden; list-style-type: none; margin-right:8px; }
+		}
+	}
 }
 
