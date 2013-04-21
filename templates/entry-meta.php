@@ -1,0 +1,1 @@
+<small>Geschreven op <?php the_date(); ?> door <?php the_author(); ?> in: <?php the_category(' '); ?></small>
