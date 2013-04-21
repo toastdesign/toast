@@ -1,1 +1,1 @@
-<?php get_template_part('templates/post-format/single', get_post_format()); ?>
+<?php get_template_part('templates/post-format/single', get_post_format() ); ?>
